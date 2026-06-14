@@ -17,13 +17,21 @@ export async function POST(request: Request) {
   }
 
   const { email, password } = parsed.data;
-  const user = await prisma.user.findUnique({ where: { email } });
+  console.log("LOGIN START", email);
+
+  const user = await prisma.user.findUnique({
+    where: { email }
+  });
+
+  console.log("USER FOUND", !!user);
 
   if (!user) {
     return NextResponse.json({ message: "Invalid email or password" }, { status: 401 });
   }
 
   const passwordIsValid = await verifyPassword(password, user.passwordHash);
+
+  console.log("PASSWORD VALID", passwordIsValid);
 
   if (!passwordIsValid) {
     return NextResponse.json({ message: "Invalid email or password" }, { status: 401 });
@@ -40,11 +48,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Your account registration was rejected" }, { status: 403 });
   }
 
+  console.log("ABOUT TO SIGN JWT");
+
   const token = signSessionToken({
     userId: user.id,
     email: user.email,
     role: user.role
   });
+
+  console.log("JWT CREATED");
 
   const response = NextResponse.json({
     message: "Login successful",

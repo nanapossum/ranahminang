@@ -1,0 +1,42 @@
+services:
+  app:
+    build: .
+    container_name: ranahminang-app
+
+    restart: always
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      DATABASE_URL: mysql://ranahminang_user:ranahminang123@mariadb:3306/ranahminang
+      JWT_SECRET: ranahminang-secret
+
+    depends_on:
+      - mariadb
+
+    volumes:
+      - uploads_data:/app/public/uploads
+
+  mariadb:
+    image: mariadb:11
+
+    container_name: ranahminang-mariadb
+
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: ranahminang
+      MYSQL_USER: ranahminang_user
+      MYSQL_PASSWORD: ranahminang123
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:
+  uploads_data:

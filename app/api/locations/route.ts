@@ -1,8 +1,14 @@
 import { NextResponse } from "next/server";
-import { locations } from "@/data/locations";
+import { prisma } from "@/lib/db";
 
-export function GET() {
+export const dynamic = "force-dynamic";
+
+export async function GET() {
+  const destinations = await prisma.destination.findMany({
+    orderBy: { createdAt: "desc" }
+  });
+
   return NextResponse.json({
-    data: locations
+    data: destinations
   });
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { PasswordInput } from "@/components/auth/PasswordInput";
 
 type Status = {
   type: "idle" | "success" | "error";
@@ -68,17 +69,7 @@ export function RegisterForm() {
         />
       </label>
 
-      <label className="block">
-        <span className="text-sm font-medium text-earth-bark/80">Password</span>
-        <input
-          name="password"
-          type="password"
-          autoComplete="new-password"
-          minLength={8}
-          required
-          className="mt-2 w-full rounded-md border border-earth-bark/15 bg-white px-3 py-2 text-earth-bark outline-none transition focus:border-earth-clay"
-        />
-      </label>
+      <PasswordInput name="password" label="Password" autoComplete="new-password" minLength={8} />
 
       <label className="block">
         <span className="text-sm font-medium text-earth-bark/80">Role</span>

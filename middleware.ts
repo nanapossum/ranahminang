@@ -4,9 +4,13 @@ import { authCookieName } from "@/lib/auth/cookies";
 import { verifyEdgeSessionToken } from "@/lib/auth/edge";
 
 const protectedRoutes: Array<{ prefix: string; roles: Role[] }> = [
+  { prefix: "/dashboard/admin", roles: ["superadmin"] },
+  { prefix: "/dashboard/producer", roles: ["producer"] },
+  { prefix: "/dashboard/tourist", roles: ["superadmin", "tourist"] },
   { prefix: "/superadmin", roles: ["superadmin"] },
-  { prefix: "/producer", roles: ["superadmin", "producer"] },
+  { prefix: "/producer", roles: ["producer"] },
   { prefix: "/tourist", roles: ["superadmin", "tourist"] },
+  { prefix: "/profile", roles: ["superadmin", "producer", "tourist"] },
   { prefix: "/api/admin", roles: ["superadmin"] }
 ];
 
@@ -46,5 +50,22 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/superadmin/:path*", "/producer/:path*", "/tourist/:path*", "/api/admin/:path*"]
+  matcher: [
+    "/dashboard/admin",
+    "/dashboard/admin/:path*",
+    "/dashboard/producer",
+    "/dashboard/producer/:path*",
+    "/dashboard/tourist",
+    "/dashboard/tourist/:path*",
+    "/superadmin",
+    "/superadmin/:path*",
+    "/producer",
+    "/producer/:path*",
+    "/tourist",
+    "/tourist/:path*",
+    "/profile",
+    "/profile/:path*",
+    "/api/admin/:path*"
+  ]
 };
+

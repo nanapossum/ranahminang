@@ -1,7 +1,9 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import { PasswordInput } from "@/components/auth/PasswordInput";
 
 type Status = {
   type: "idle" | "success" | "error";
@@ -31,7 +33,10 @@ export function LoginForm() {
       body: JSON.stringify(payload)
     });
 
-    const data = (await response.json()) as { message?: string };
+    const data = (await response.json()) as {
+      message?: string;
+      user?: { role?: "superadmin" | "producer" | "tourist" };
+    };
 
     setIsSubmitting(false);
 
@@ -40,7 +45,14 @@ export function LoginForm() {
       return;
     }
 
-    const nextPath = searchParams.get("next") || "/";
+    const roleHome =
+      data.user?.role === "superadmin"
+        ? "/dashboard/admin"
+        : data.user?.role
+          ? `/dashboard/${data.user.role}`
+          : "/";
+    const nextPath = searchParams.get("next") || roleHome;
+    window.dispatchEvent(new Event("ranahminang:auth-changed"));
     router.push(nextPath);
     router.refresh();
   }
@@ -58,16 +70,13 @@ export function LoginForm() {
         />
       </label>
 
-      <label className="block">
-        <span className="text-sm font-medium text-earth-bark/80">Password</span>
-        <input
-          name="password"
-          type="password"
-          autoComplete="current-password"
-          required
-          className="mt-2 w-full rounded-md border border-earth-bark/15 bg-white px-3 py-2 text-earth-bark outline-none transition focus:border-earth-clay"
-        />
-      </label>
+      <PasswordInput name="password" label="Password" autoComplete="current-password" />
+
+      <div className="text-right">
+        <Link href="/forgot-password" className="text-sm font-semibold text-earth-clay transition hover:text-earth-bark">
+          Forgot Password?
+        </Link>
+      </div>
 
       {status.message ? (
         <p className={status.type === "error" ? "text-sm text-red-700" : "text-sm text-green-700"}>

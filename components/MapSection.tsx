@@ -1,6 +1,20 @@
 import dynamic from "next/dynamic";
-import { locations } from "@/data/locations";
 import { SectionHeading } from "./SectionHeading";
+
+type MapDestination = {
+  id: string;
+  title: string;
+  description: string;
+  image: string | null;
+  location: string;
+  category: string;
+  latitude: number | null;
+  longitude: number | null;
+};
+
+type MapSectionProps = {
+  destinations?: MapDestination[];
+};
 
 const CulturalMap = dynamic(
   () => import("./CulturalMap").then((module) => module.CulturalMap),
@@ -14,17 +28,17 @@ const CulturalMap = dynamic(
   }
 );
 
-export function MapSection() {
+export function MapSection({ destinations = [] }: MapSectionProps) {
   return (
-    <section id="map" className="bg-[#fbf6ec] px-4 py-20 sm:px-6 lg:px-8">
+    <section id="map" className="bg-stone-50 px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Geographical Exploration"
           title="Interactive Cultural Map"
-          description="Markers use real coordinates for historical landmarks, natural destinations, and cultural regions across West Sumatra."
+          description="Markers use real coordinates for tourism destinations and cultural regions across West Sumatra."
         />
-        <div className="mt-10 overflow-hidden rounded-lg border border-earth-bark/10 bg-white p-2 shadow-soft">
-          <CulturalMap locations={locations} />
+        <div className="mt-10 overflow-hidden rounded-xl border border-stone-200 bg-white p-2 shadow-soft">
+          <CulturalMap destinations={destinations} />
         </div>
       </div>
     </section>

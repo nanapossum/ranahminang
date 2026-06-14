@@ -27,6 +27,7 @@ export async function getCurrentSession() {
       email: true,
       role: true,
       approvalStatus: true,
+      profileImage: true,
       createdAt: true
     }
   });

@@ -26,9 +26,70 @@ model User {
   passwordHash   String
   role           Role           @default(tourist)
   approvalStatus ApprovalStatus @default(PENDING)
+  resetTokenHash String?
+  resetTokenExpiresAt DateTime?
+  profileImage   String?
   createdAt      DateTime       @default(now())
   updatedAt      DateTime       @updatedAt
 
+  destinations Destination[]
+  bookmarks    Bookmark[]
+  articles     Article[]
+
   @@index([role])
   @@index([approvalStatus])
+  @@index([resetTokenHash])
 }
+
+model Destination {
+  id          String   @id @default(cuid())
+  title       String
+  description String   @db.Text
+  image       String?
+  location    String
+  category    String
+  latitude    Float?
+  longitude   Float?
+  createdBy   Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  creator    User      @relation(fields: [createdBy], references: [id], onDelete: Cascade)
+  bookmarks  Bookmark[]
+
+  @@index([createdBy])
+  @@index([category])
+  @@index([createdAt])
+}
+
+model Bookmark {
+  id            String   @id @default(cuid())
+  userId        Int
+  destinationId String
+  createdAt     DateTime @default(now())
+
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  destination Destination @relation(fields: [destinationId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, destinationId])
+  @@index([userId])
+  @@index([destinationId])
+}
+
+model Article {
+  id          String   @id @default(cuid())
+  title       String
+  content     String   @db.Text
+  image       String?
+  category    String
+  createdBy   Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  creator     User     @relation(fields: [createdBy], references: [id], onDelete: Cascade)
+
+  @@index([createdBy])
+  @@index([category])
+  @@index([createdAt])
+}
+

@@ -1,0 +1,92 @@
+
+> ranahminang@1.0.0 dev
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+  - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 4.6s
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 933ms (94 modules)
+ ○ Compiling /tourist ...
+ ✓ Compiled /tourist in 6.6s (689 modules)
+ GET /tourist 200 in 7469ms
+ ✓ Compiled /api/auth/me in 444ms (398 modules)
+ GET /api/auth/me 200 in 669ms
+ GET /api/auth/me 200 in 673ms
+ ✓ Compiled /api/auth/logout in 258ms (400 modules)
+ POST /api/auth/logout 200 in 346ms
+ GET /api/auth/me 401 in 45ms
+ ○ Compiling / ...
+ ✓ Compiled / in 3.2s (773 modules)
+ GET /api/auth/me 401 in 105ms
+ ✓ Compiled /api/weather in 403ms (468 modules)
+ GET /api/weather?location=Bukittingi 200 in 874ms
+ GET /api/weather?lat=-0.3052&lon=100.3692 200 in 778ms
+ GET /api/weather?lat=-0.1049&lon=100.6654 200 in 778ms
+ GET /api/weather?lat=-0.3093&lon=100.2036 200 in 777ms
+ GET /api/weather?lat=-0.4555&lon=100.5741 200 in 778ms
+ GET /api/weather?lat=-0.4716&lon=100.6215 200 in 777ms
+ GET /api/weather?lat=-0.3077&lon=100.3624 200 in 777ms
+ GET /api/auth/me 401 in 802ms
+ GET /api/weather?lat=-0.3052&lon=100.3692 200 in 20ms
+ GET /api/weather?lat=-0.4555&lon=100.5741 200 in 63ms
+ GET /api/weather?location=Bukittingi 200 in 63ms
+ GET /api/weather?lat=-0.4716&lon=100.6215 200 in 63ms
+ GET /api/weather?lat=-0.1049&lon=100.6654 200 in 63ms
+ GET /api/weather?lat=-0.3093&lon=100.2036 200 in 59ms
+ GET /api/weather?lat=-0.3077&lon=100.3624 200 in 58ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 1270ms (776 modules)
+ ○ Compiling /api/auth/login ...
+ ✓ Compiled /api/auth/login in 1838ms (561 modules)
+ POST /api/auth/login 200 in 2572ms
+ ○ Compiling /dashboard/producer ...
+ ✓ Compiled /dashboard/producer in 1627ms (875 modules)
+ GET /api/auth/me 200 in 30ms
+ GET /api/weather?lat=-0.4716&lon=100.6215 200 in 34ms
+ GET /api/weather?location=Bukittingi 200 in 31ms
+ GET /api/auth/me 200 in 55ms
+ GET /api/weather?lat=-0.3093&lon=100.2036 200 in 57ms
+ GET /api/weather?lat=-0.1049&lon=100.6654 200 in 56ms
+ GET /api/weather?lat=-0.3052&lon=100.3692 200 in 56ms
+ GET /api/weather?lat=-0.4555&lon=100.5741 200 in 54ms
+ GET /api/weather?lat=-0.3077&lon=100.3624 200 in 55ms
+ GET /api/weather?lat=-0.4716&lon=100.6215 200 in 24ms
+ GET /api/weather?location=Bukittingi 200 in 23ms
+ GET /api/weather?lat=-0.3093&lon=100.2036 200 in 21ms
+ GET /api/weather?lat=-0.1049&lon=100.6654 200 in 36ms
+ GET /api/weather?lat=-0.3052&lon=100.3692 200 in 36ms
+ GET /api/weather?lat=-0.4555&lon=100.5741 200 in 31ms
+ GET /api/weather?lat=-0.3077&lon=100.3624 200 in 14ms
+ POST /api/auth/login 200 in 700ms
+ ○ Compiling /dashboard/admin ...
+ ✓ Compiled /dashboard/admin in 731ms (877 modules)
+ ○ Compiling /superadmin ...
+ ✓ Compiled /superadmin in 1244ms (879 modules)
+ GET /api/auth/me 200 in 21ms
+ GET /api/auth/me 200 in 16ms
+ GET /api/auth/me 200 in 20ms
+ GET /api/auth/me 200 in 26ms
+ GET /api/auth/me 200 in 41ms
+ GET /api/weather?location=Bukittingi 200 in 35ms
+ GET /api/weather?lat=-0.4716&lon=100.6215 200 in 36ms
+ GET /api/weather?lat=-0.3052&lon=100.3692 200 in 28ms
+ GET /api/weather?lat=-0.1049&lon=100.6654 200 in 23ms
+ GET /api/weather?lat=-0.3093&lon=100.2036 200 in 37ms
+ GET /api/weather?lat=-0.3077&lon=100.3624 200 in 39ms
+ GET /api/weather?lat=-0.4555&lon=100.5741 200 in 38ms
+ GET /api/weather?lat=-0.4716&lon=100.6215 200 in 20ms
+ GET /api/weather?location=Bukittingi 200 in 32ms
+ GET /api/weather?lat=-0.1049&lon=100.6654 200 in 47ms
+ GET /api/weather?lat=-0.3052&lon=100.3692 200 in 48ms
+ GET /api/weather?lat=-0.3093&lon=100.2036 200 in 47ms
+ GET /api/weather?lat=-0.4555&lon=100.5741 200 in 36ms
+ GET /api/weather?lat=-0.3077&lon=100.3624 200 in 38ms
+ GET /api/auth/me 200 in 34ms
+ GET /api/auth/me 200 in 38ms
+ ○ Compiling /dashboard/admin/destinations ...
+ ✓ Compiled /dashboard/admin/destinations in 1613ms (890 modules)
+[?25h

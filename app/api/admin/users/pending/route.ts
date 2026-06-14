@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { requireRole } from "@/lib/auth/session";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const auth = await requireRole(["superadmin"]);
 
@@ -10,7 +12,7 @@ export async function GET() {
   }
 
   const users = await prisma.user.findMany({
-    where: { approvalStatus: "PENDING" },
+    where: { role: "producer", approvalStatus: "PENDING" },
     orderBy: { createdAt: "asc" },
     select: {
       id: true,
